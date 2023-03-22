@@ -1,3 +1,5 @@
+import {BarTask} from "./bar-task";
+
 export enum ViewMode {
   Hour = "Hour",
   QuarterDay = "Quarter Day",
@@ -31,6 +33,9 @@ export interface Task {
   dependencies?: string[];
   hideChildren?: boolean;
   displayOrder?: number;
+  color: string,
+  level: string,
+  graphHeight: number,
 }
 
 export interface EventOption {
@@ -142,4 +147,6 @@ export interface StylingOption {
 
 export interface GanttProps extends EventOption, DisplayOption, StylingOption {
   tasks: Task[];
+  handleHeaderMlsClick: (value: BarTask) => void,
+  showHeader: boolean,
 }

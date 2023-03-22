@@ -12,6 +12,9 @@ export function initTasks() {
       type: "project",
       hideChildren: false,
       displayOrder: 1,
+      color: "red",
+      level: "L2",
+      graphHeight: 12,
     },
     {
       start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 1),
@@ -28,6 +31,9 @@ export function initTasks() {
       type: "task",
       project: "ProjectSample",
       displayOrder: 2,
+      color: "",
+      level: "",
+      graphHeight: 12,
     },
     {
       start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 2),
@@ -39,6 +45,9 @@ export function initTasks() {
       type: "task",
       project: "ProjectSample",
       displayOrder: 3,
+      color: "",
+      level: "",
+      graphHeight: 12,
     },
     {
       start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 4),
@@ -50,6 +59,9 @@ export function initTasks() {
       type: "task",
       project: "ProjectSample",
       displayOrder: 4,
+      color: "",
+      level: "",
+      graphHeight: 12,
     },
     {
       start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 8),
@@ -61,6 +73,9 @@ export function initTasks() {
       type: "task",
       project: "ProjectSample",
       displayOrder: 5,
+      color: "",
+      level: "",
+      graphHeight: 12,
     },
     {
       start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 8),
@@ -72,6 +87,9 @@ export function initTasks() {
       dependencies: ["Task 2"],
       project: "ProjectSample",
       displayOrder: 6,
+      color: "",
+      level: "",
+      graphHeight: 12,
     },
     {
       start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 15),
@@ -83,6 +101,9 @@ export function initTasks() {
       dependencies: ["Task 4"],
       project: "ProjectSample",
       displayOrder: 7,
+      color: "",
+      level: "",
+      graphHeight: 12,
     },
     {
       start: new Date(currentDate.getFullYear(), currentDate.getMonth(), 18),
@@ -92,6 +113,9 @@ export function initTasks() {
       progress: 0,
       isDisabled: true,
       type: "task",
+      color: "blue",
+      level: "L2",
+      graphHeight: 12,
     },
   ];
   return tasks;

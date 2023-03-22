@@ -87,6 +87,10 @@ const App = () => {
         onExpanderClick={handleExpanderClick}
         listCellWidth={isChecked ? "155px" : ""}
         columnWidth={columnWidth}
+        handleHeaderMlsClick={(value) => {
+          console.log("-value---", value);
+        }}
+        showHeader={true}
       />
       <h3>Gantt With Limited Height</h3>
       <Gantt
@@ -102,6 +106,10 @@ const App = () => {
         listCellWidth={isChecked ? "155px" : ""}
         ganttHeight={300}
         columnWidth={columnWidth}
+        handleHeaderMlsClick={(value) => {
+          console.log("-value---", value);
+        }}
+        showHeader={false}
       />
     </div>
   );

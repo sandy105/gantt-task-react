@@ -1,8 +1,9 @@
-import React, { useRef, useEffect } from "react";
+import React, {useRef, useEffect} from "react";
 import { GridProps, Grid } from "../grid/grid";
 import { CalendarProps, Calendar } from "../calendar/calendar";
 import { TaskGanttContentProps, TaskGanttContent } from "./task-gantt-content";
 import styles from "./gantt.module.css";
+import {Milestones} from "../header/milestones"
 
 export type TaskGanttProps = {
   gridProps: GridProps;
@@ -11,6 +12,7 @@ export type TaskGanttProps = {
   ganttHeight: number;
   scrollY: number;
   scrollX: number;
+  showHeader: boolean;
 };
 export const TaskGantt: React.FC<TaskGanttProps> = ({
   gridProps,
@@ -19,6 +21,7 @@ export const TaskGantt: React.FC<TaskGanttProps> = ({
   ganttHeight,
   scrollY,
   scrollX,
+  showHeader,
 }) => {
   const ganttSVGRef = useRef<SVGSVGElement>(null);
   const horizontalContainerRef = useRef<HTMLDivElement>(null);
@@ -51,13 +54,14 @@ export const TaskGantt: React.FC<TaskGanttProps> = ({
       >
         <Calendar {...calendarProps} />
       </svg>
+      {showHeader && (<Milestones {...barProps} />)}
       <div
         ref={horizontalContainerRef}
         className={styles.horizontalContainer}
         style={
           ganttHeight
             ? { height: ganttHeight, width: gridProps.svgWidth }
-            : { width: gridProps.svgWidth }
+            : { width: gridProps.svgWidth}
         }
       >
         <svg

@@ -197,6 +197,7 @@ const convertToBar = (
     height: taskHeight,
     barChildren: [],
     styles,
+    graphY:0,
   };
 };
 
@@ -243,6 +244,7 @@ const convertToMilestone = (
     hideChildren: undefined,
     barChildren: [],
     styles,
+    graphY:0,
   };
 };
 

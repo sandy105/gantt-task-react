@@ -1,0 +1,20 @@
+.milestoneWrapper {
+    cursor: pointer;
+
+  }
+  
+  .milestoneBackground {
+    user-select: none;
+  }
+  .barLabelOutside {
+    fill: #555;
+    text-anchor: start;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+    font-size: 12px;
+    dominant-baseline: central;
+  }

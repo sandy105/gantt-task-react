@@ -65,6 +65,8 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
   onDelete,
   onSelect,
   onExpanderClick,
+  handleHeaderMlsClick,
+  showHeader = false,
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const taskListRef = useRef<HTMLDivElement>(null);
@@ -257,17 +259,19 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
   // scroll events
   useEffect(() => {
     const handleWheel = (event: WheelEvent) => {
-      if (event.shiftKey || event.deltaX) {
-        const scrollMove = event.deltaX ? event.deltaX : event.deltaY;
-        let newScrollX = scrollX + scrollMove;
-        if (newScrollX < 0) {
-          newScrollX = 0;
-        } else if (newScrollX > svgWidth) {
-          newScrollX = svgWidth;
-        }
-        setScrollX(newScrollX);
-        event.preventDefault();
-      } else if (ganttHeight) {
+      // if (event.shiftKey || event.deltaX) {
+      //   const scrollMove = event.deltaX ? event.deltaX : event.deltaY;
+      //   let newScrollX = scrollX + scrollMove;
+      //   if (newScrollX < 0) {
+      //     newScrollX = 0;
+      //   } else if (newScrollX > svgWidth) {
+      //     newScrollX = svgWidth;
+      //   }
+      //   setScrollX(newScrollX);
+      //   event.preventDefault();
+      // } else
+      const scrollDirecttion =  Math.abs(event.deltaY) >= Math.abs(event.deltaX)? "Y":"X";
+      if (ganttHeight && scrollDirecttion === "Y") {
         let newScrollY = scrollY + event.deltaY;
         if (newScrollY < 0) {
           newScrollY = 0;
@@ -278,6 +282,15 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
           setScrollY(newScrollY);
           event.preventDefault();
         }
+      } else if (scrollDirecttion === "X") {
+            const scrollMove = event.deltaX ? event.deltaX : event.deltaY;
+        let newScrollX = scrollX + scrollMove;
+        if (newScrollX < 0) {
+          newScrollX = 0;
+        } else if (newScrollX > svgWidth) {
+          newScrollX = svgWidth;
+        }
+        setScrollX(newScrollX);
       }
 
       setIgnoreScrollEvent(true);
@@ -429,6 +442,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
     onDoubleClick,
     onClick,
     onDelete,
+    handleHeaderMlsClick: handleHeaderMlsClick,
   };
 
   const tableProps: TaskListProps = {
@@ -465,6 +479,7 @@ export const Gantt: React.FunctionComponent<GanttProps> = ({
           ganttHeight={ganttHeight}
           scrollY={scrollY}
           scrollX={scrollX}
+          showHeader={showHeader}
         />
         {ganttEvent.changedTask && (
           <Tooltip
